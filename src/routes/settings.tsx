@@ -42,7 +42,7 @@ function Page() {
           ["Quality Rules", "Auto-hold on critical defect, tolerance ±2% under-delivery"],
           ["NCR Settings", "Numbering QM-NCR-YYYY, 2-step approval, 8D template"],
         ].map(([t, d]) => (
-          <SectionCard key={t} title={t}>
+          <SectionCard key={t} title={t as string}>
             <p className="text-[11px] text-muted-foreground">{d}</p>
             <Button size="sm" variant="outline" className="mt-3 w-full" onClick={() => toast("Configuration opened")}>Configure</Button>
           </SectionCard>

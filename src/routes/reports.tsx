@@ -19,7 +19,7 @@ import {
 
 import { Button } from "@/components/ui/button";
 import { PageHeader, SectionCard } from "@/components/qm/Primitives";
-import { defectPareto, throughput, vendorQuality } from "@/lib/qm-data";
+import { topDefects, trend7d, vendorScores } from "@/lib/qm-data";
 
 export const Route = createFileRoute("/reports")({
   head: () => ({
@@ -74,15 +74,15 @@ function Page() {
         <SectionCard title="Inspection throughput" description="Received vs. inspected vs. rejected">
           <div className="h-64">
             <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={throughput}>
+              <LineChart data={trend7d}>
                 <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" vertical={false} />
                 <XAxis dataKey="day" fontSize={11} tickLine={false} axisLine={false} />
                 <YAxis fontSize={11} tickLine={false} axisLine={false} />
                 <Tooltip />
                 <Legend />
-                <Line type="monotone" dataKey="received" stroke="oklch(0.55 0.16 250)" strokeWidth={2} dot={false} />
-                <Line type="monotone" dataKey="inspected" stroke="oklch(0.62 0.15 155)" strokeWidth={2} dot={false} />
-                <Line type="monotone" dataKey="rejected" stroke="oklch(0.58 0.2 25)" strokeWidth={2} dot={false} />
+                <Line type="monotone" dataKey="passed" stroke="oklch(0.62 0.15 155)" strokeWidth={2} dot={false} />
+                <Line type="monotone" dataKey="hold" stroke="oklch(0.72 0.16 70)" strokeWidth={2} dot={false} />
+                <Line type="monotone" dataKey="failed" stroke="oklch(0.58 0.2 25)" strokeWidth={2} dot={false} />
               </LineChart>
             </ResponsiveContainer>
           </div>
@@ -91,10 +91,10 @@ function Page() {
         <SectionCard title="Defect Pareto" description="Top defect categories by occurrence">
           <div className="h-64">
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={defectPareto} layout="vertical" margin={{ left: 24 }}>
+              <BarChart data={topDefects} layout="vertical" margin={{ left: 24 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" horizontal={false} />
                 <XAxis type="number" fontSize={11} tickLine={false} axisLine={false} />
-                <YAxis type="category" dataKey="type" width={120} fontSize={11} tickLine={false} axisLine={false} />
+                <YAxis type="category" dataKey="defect" width={120} fontSize={11} tickLine={false} axisLine={false} />
                 <Tooltip />
                 <Bar dataKey="count" fill="oklch(0.55 0.16 250)" radius={[0, 6, 6, 0]} />
               </BarChart>
@@ -105,7 +105,7 @@ function Page() {
         <SectionCard title="Vendor quality scorecard" description="Acceptance rate by supplier">
           <div className="h-64">
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={vendorQuality}>
+              <BarChart data={vendorScores}>
                 <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" vertical={false} />
                 <XAxis dataKey="vendor" fontSize={10} tickLine={false} axisLine={false} interval={0} />
                 <YAxis fontSize={11} domain={[80, 100]} tickLine={false} axisLine={false} />
