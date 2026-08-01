@@ -16,6 +16,7 @@ import { Route as HistoryRouteImport } from './routes/history'
 import { Route as HoldRouteImport } from './routes/hold'
 import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as ReleaseRouteImport } from './routes/release'
+import { Route as ReportsRouteImport } from './routes/reports'
 import { Route as ReworkRouteImport } from './routes/rework'
 import { Route as RtsRouteImport } from './routes/rts'
 import { Route as SamplingRouteImport } from './routes/sampling'
@@ -63,6 +64,11 @@ const NotificationsRoute = NotificationsRouteImport.update({
 const ReleaseRoute = ReleaseRouteImport.update({
   id: '/release',
   path: '/release',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReportsRoute = ReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ReworkRoute = ReworkRouteImport.update({
@@ -139,6 +145,7 @@ export interface FileRoutesByFullPath {
   '/hold': typeof HoldRoute
   '/notifications': typeof NotificationsRoute
   '/release': typeof ReleaseRoute
+  '/reports': typeof ReportsRoute
   '/rework': typeof ReworkRoute
   '/rts': typeof RtsRoute
   '/sampling': typeof SamplingRoute
@@ -161,6 +168,7 @@ export interface FileRoutesByTo {
   '/hold': typeof HoldRoute
   '/notifications': typeof NotificationsRoute
   '/release': typeof ReleaseRoute
+  '/reports': typeof ReportsRoute
   '/rework': typeof ReworkRoute
   '/rts': typeof RtsRoute
   '/sampling': typeof SamplingRoute
@@ -184,6 +192,7 @@ export interface FileRoutesById {
   '/hold': typeof HoldRoute
   '/notifications': typeof NotificationsRoute
   '/release': typeof ReleaseRoute
+  '/reports': typeof ReportsRoute
   '/rework': typeof ReworkRoute
   '/rts': typeof RtsRoute
   '/sampling': typeof SamplingRoute
@@ -208,6 +217,7 @@ export interface FileRouteTypes {
     | '/hold'
     | '/notifications'
     | '/release'
+    | '/reports'
     | '/rework'
     | '/rts'
     | '/sampling'
@@ -230,6 +240,7 @@ export interface FileRouteTypes {
     | '/hold'
     | '/notifications'
     | '/release'
+    | '/reports'
     | '/rework'
     | '/rts'
     | '/sampling'
@@ -252,6 +263,7 @@ export interface FileRouteTypes {
     | '/hold'
     | '/notifications'
     | '/release'
+    | '/reports'
     | '/rework'
     | '/rts'
     | '/sampling'
@@ -275,6 +287,7 @@ export interface RootRouteChildren {
   HoldRoute: typeof HoldRoute
   NotificationsRoute: typeof NotificationsRoute
   ReleaseRoute: typeof ReleaseRoute
+  ReportsRoute: typeof ReportsRoute
   ReworkRoute: typeof ReworkRoute
   RtsRoute: typeof RtsRoute
   SamplingRoute: typeof SamplingRoute
@@ -339,6 +352,13 @@ declare module '@tanstack/react-router' {
       path: '/release'
       fullPath: '/release'
       preLoaderRoute: typeof ReleaseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reports': {
+      id: '/reports'
+      path: '/reports'
+      fullPath: '/reports'
+      preLoaderRoute: typeof ReportsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/rework': {
@@ -443,6 +463,7 @@ const rootRouteChildren: RootRouteChildren = {
   HoldRoute: HoldRoute,
   NotificationsRoute: NotificationsRoute,
   ReleaseRoute: ReleaseRoute,
+  ReportsRoute: ReportsRoute,
   ReworkRoute: ReworkRoute,
   RtsRoute: RtsRoute,
   SamplingRoute: SamplingRoute,
