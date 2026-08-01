@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as HoldRouteImport } from './routes/hold'
 import { Route as InspectionIdRouteImport } from './routes/inspection/$id'
 import { Route as NcrIndexRouteImport } from './routes/ncr/index'
 import { Route as NcrIdRouteImport } from './routes/ncr/$id'
@@ -20,6 +21,11 @@ import { Route as QueueIdRouteImport } from './routes/queue/$id'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HoldRoute = HoldRouteImport.update({
+  id: '/hold',
+  path: '/hold',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InspectionIdRoute = InspectionIdRouteImport.update({
@@ -55,6 +61,7 @@ const QueueIdRoute = QueueIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/hold': typeof HoldRoute
   '/inspection/$id': typeof InspectionIdRoute
   '/ncr/$id': typeof NcrIdRoute
   '/ncr/new': typeof NcrNewRoute
@@ -64,6 +71,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/hold': typeof HoldRoute
   '/inspection/$id': typeof InspectionIdRoute
   '/ncr/$id': typeof NcrIdRoute
   '/ncr/new': typeof NcrNewRoute
@@ -74,6 +82,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/hold': typeof HoldRoute
   '/inspection/$id': typeof InspectionIdRoute
   '/ncr/$id': typeof NcrIdRoute
   '/ncr/new': typeof NcrNewRoute
@@ -85,6 +94,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/hold'
     | '/inspection/$id'
     | '/ncr/$id'
     | '/ncr/new'
@@ -94,6 +104,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/hold'
     | '/inspection/$id'
     | '/ncr/$id'
     | '/ncr/new'
@@ -103,6 +114,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/hold'
     | '/inspection/$id'
     | '/ncr/$id'
     | '/ncr/new'
@@ -113,6 +125,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  HoldRoute: typeof HoldRoute
   InspectionIdRoute: typeof InspectionIdRoute
   NcrIdRoute: typeof NcrIdRoute
   NcrNewRoute: typeof NcrNewRoute
@@ -128,6 +141,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hold': {
+      id: '/hold'
+      path: '/hold'
+      fullPath: '/hold'
+      preLoaderRoute: typeof HoldRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/inspection/$id': {
@@ -177,6 +197,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  HoldRoute: HoldRoute,
   InspectionIdRoute: InspectionIdRoute,
   NcrIdRoute: NcrIdRoute,
   NcrNewRoute: NcrNewRoute,
