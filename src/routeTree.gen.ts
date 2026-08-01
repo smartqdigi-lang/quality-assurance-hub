@@ -10,7 +10,11 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuditRouteImport } from './routes/audit'
 import { Route as HoldRouteImport } from './routes/hold'
+import { Route as ReworkRouteImport } from './routes/rework'
+import { Route as RtsRouteImport } from './routes/rts'
+import { Route as ScrapRouteImport } from './routes/scrap'
 import { Route as InspectionIdRouteImport } from './routes/inspection/$id'
 import { Route as NcrIndexRouteImport } from './routes/ncr/index'
 import { Route as NcrIdRouteImport } from './routes/ncr/$id'
@@ -23,9 +27,29 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuditRoute = AuditRouteImport.update({
+  id: '/audit',
+  path: '/audit',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const HoldRoute = HoldRouteImport.update({
   id: '/hold',
   path: '/hold',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReworkRoute = ReworkRouteImport.update({
+  id: '/rework',
+  path: '/rework',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RtsRoute = RtsRouteImport.update({
+  id: '/rts',
+  path: '/rts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ScrapRoute = ScrapRouteImport.update({
+  id: '/scrap',
+  path: '/scrap',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InspectionIdRoute = InspectionIdRouteImport.update({
@@ -61,7 +85,11 @@ const QueueIdRoute = QueueIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/audit': typeof AuditRoute
   '/hold': typeof HoldRoute
+  '/rework': typeof ReworkRoute
+  '/rts': typeof RtsRoute
+  '/scrap': typeof ScrapRoute
   '/inspection/$id': typeof InspectionIdRoute
   '/ncr/$id': typeof NcrIdRoute
   '/ncr/new': typeof NcrNewRoute
@@ -71,7 +99,11 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/audit': typeof AuditRoute
   '/hold': typeof HoldRoute
+  '/rework': typeof ReworkRoute
+  '/rts': typeof RtsRoute
+  '/scrap': typeof ScrapRoute
   '/inspection/$id': typeof InspectionIdRoute
   '/ncr/$id': typeof NcrIdRoute
   '/ncr/new': typeof NcrNewRoute
@@ -82,7 +114,11 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/audit': typeof AuditRoute
   '/hold': typeof HoldRoute
+  '/rework': typeof ReworkRoute
+  '/rts': typeof RtsRoute
+  '/scrap': typeof ScrapRoute
   '/inspection/$id': typeof InspectionIdRoute
   '/ncr/$id': typeof NcrIdRoute
   '/ncr/new': typeof NcrNewRoute
@@ -94,7 +130,11 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/audit'
     | '/hold'
+    | '/rework'
+    | '/rts'
+    | '/scrap'
     | '/inspection/$id'
     | '/ncr/$id'
     | '/ncr/new'
@@ -104,7 +144,11 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/audit'
     | '/hold'
+    | '/rework'
+    | '/rts'
+    | '/scrap'
     | '/inspection/$id'
     | '/ncr/$id'
     | '/ncr/new'
@@ -114,7 +158,11 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/audit'
     | '/hold'
+    | '/rework'
+    | '/rts'
+    | '/scrap'
     | '/inspection/$id'
     | '/ncr/$id'
     | '/ncr/new'
@@ -125,7 +173,11 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuditRoute: typeof AuditRoute
   HoldRoute: typeof HoldRoute
+  ReworkRoute: typeof ReworkRoute
+  RtsRoute: typeof RtsRoute
+  ScrapRoute: typeof ScrapRoute
   InspectionIdRoute: typeof InspectionIdRoute
   NcrIdRoute: typeof NcrIdRoute
   NcrNewRoute: typeof NcrNewRoute
@@ -143,11 +195,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/audit': {
+      id: '/audit'
+      path: '/audit'
+      fullPath: '/audit'
+      preLoaderRoute: typeof AuditRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/hold': {
       id: '/hold'
       path: '/hold'
       fullPath: '/hold'
       preLoaderRoute: typeof HoldRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rework': {
+      id: '/rework'
+      path: '/rework'
+      fullPath: '/rework'
+      preLoaderRoute: typeof ReworkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rts': {
+      id: '/rts'
+      path: '/rts'
+      fullPath: '/rts'
+      preLoaderRoute: typeof RtsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/scrap': {
+      id: '/scrap'
+      path: '/scrap'
+      fullPath: '/scrap'
+      preLoaderRoute: typeof ScrapRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/inspection/$id': {
@@ -197,7 +277,11 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuditRoute: AuditRoute,
   HoldRoute: HoldRoute,
+  ReworkRoute: ReworkRoute,
+  RtsRoute: RtsRoute,
+  ScrapRoute: ScrapRoute,
   InspectionIdRoute: InspectionIdRoute,
   NcrIdRoute: NcrIdRoute,
   NcrNewRoute: NcrNewRoute,
