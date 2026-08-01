@@ -10,33 +10,115 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as InspectionIdRouteImport } from './routes/inspection/$id'
+import { Route as NcrIndexRouteImport } from './routes/ncr/index'
+import { Route as NcrIdRouteImport } from './routes/ncr/$id'
+import { Route as NcrNewRouteImport } from './routes/ncr/new'
+import { Route as QueueIndexRouteImport } from './routes/queue/index'
+import { Route as QueueIdRouteImport } from './routes/queue/$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const InspectionIdRoute = InspectionIdRouteImport.update({
+  id: '/inspection/$id',
+  path: '/inspection/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NcrIndexRoute = NcrIndexRouteImport.update({
+  id: '/ncr/',
+  path: '/ncr/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NcrIdRoute = NcrIdRouteImport.update({
+  id: '/ncr/$id',
+  path: '/ncr/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NcrNewRoute = NcrNewRouteImport.update({
+  id: '/ncr/new',
+  path: '/ncr/new',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QueueIndexRoute = QueueIndexRouteImport.update({
+  id: '/queue/',
+  path: '/queue/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QueueIdRoute = QueueIdRouteImport.update({
+  id: '/queue/$id',
+  path: '/queue/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/inspection/$id': typeof InspectionIdRoute
+  '/ncr/$id': typeof NcrIdRoute
+  '/ncr/new': typeof NcrNewRoute
+  '/queue/$id': typeof QueueIdRoute
+  '/ncr/': typeof NcrIndexRoute
+  '/queue/': typeof QueueIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/inspection/$id': typeof InspectionIdRoute
+  '/ncr/$id': typeof NcrIdRoute
+  '/ncr/new': typeof NcrNewRoute
+  '/queue/$id': typeof QueueIdRoute
+  '/ncr': typeof NcrIndexRoute
+  '/queue': typeof QueueIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/inspection/$id': typeof InspectionIdRoute
+  '/ncr/$id': typeof NcrIdRoute
+  '/ncr/new': typeof NcrNewRoute
+  '/queue/$id': typeof QueueIdRoute
+  '/ncr/': typeof NcrIndexRoute
+  '/queue/': typeof QueueIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/inspection/$id'
+    | '/ncr/$id'
+    | '/ncr/new'
+    | '/queue/$id'
+    | '/ncr/'
+    | '/queue/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/inspection/$id'
+    | '/ncr/$id'
+    | '/ncr/new'
+    | '/queue/$id'
+    | '/ncr'
+    | '/queue'
+  id:
+    | '__root__'
+    | '/'
+    | '/inspection/$id'
+    | '/ncr/$id'
+    | '/ncr/new'
+    | '/queue/$id'
+    | '/ncr/'
+    | '/queue/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  InspectionIdRoute: typeof InspectionIdRoute
+  NcrIdRoute: typeof NcrIdRoute
+  NcrNewRoute: typeof NcrNewRoute
+  QueueIdRoute: typeof QueueIdRoute
+  NcrIndexRoute: typeof NcrIndexRoute
+  QueueIndexRoute: typeof QueueIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,22 +130,60 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/inspection/$id': {
+      id: '/inspection/$id'
+      path: '/inspection/$id'
+      fullPath: '/inspection/$id'
+      preLoaderRoute: typeof InspectionIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ncr/': {
+      id: '/ncr/'
+      path: '/ncr'
+      fullPath: '/ncr/'
+      preLoaderRoute: typeof NcrIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ncr/$id': {
+      id: '/ncr/$id'
+      path: '/ncr/$id'
+      fullPath: '/ncr/$id'
+      preLoaderRoute: typeof NcrIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ncr/new': {
+      id: '/ncr/new'
+      path: '/ncr/new'
+      fullPath: '/ncr/new'
+      preLoaderRoute: typeof NcrNewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/queue/': {
+      id: '/queue/'
+      path: '/queue'
+      fullPath: '/queue/'
+      preLoaderRoute: typeof QueueIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/queue/$id': {
+      id: '/queue/$id'
+      path: '/queue/$id'
+      fullPath: '/queue/$id'
+      preLoaderRoute: typeof QueueIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  InspectionIdRoute: InspectionIdRoute,
+  NcrIdRoute: NcrIdRoute,
+  NcrNewRoute: NcrNewRoute,
+  QueueIdRoute: QueueIdRoute,
+  NcrIndexRoute: NcrIndexRoute,
+  QueueIndexRoute: QueueIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
