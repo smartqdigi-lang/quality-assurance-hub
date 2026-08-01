@@ -10,33 +10,297 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuditRouteImport } from './routes/audit'
+import { Route as DamageRouteImport } from './routes/damage'
+import { Route as HistoryRouteImport } from './routes/history'
+import { Route as HoldRouteImport } from './routes/hold'
+import { Route as NotificationsRouteImport } from './routes/notifications'
+import { Route as ReleaseRouteImport } from './routes/release'
+import { Route as ReportsRouteImport } from './routes/reports'
+import { Route as ReworkRouteImport } from './routes/rework'
+import { Route as RtsRouteImport } from './routes/rts'
+import { Route as SamplingRouteImport } from './routes/sampling'
+import { Route as ScanRouteImport } from './routes/scan'
+import { Route as ScrapRouteImport } from './routes/scrap'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as StorageRouteImport } from './routes/storage'
+import { Route as InspectionIdRouteImport } from './routes/inspection/$id'
+import { Route as NcrIndexRouteImport } from './routes/ncr/index'
+import { Route as NcrIdRouteImport } from './routes/ncr/$id'
+import { Route as NcrNewRouteImport } from './routes/ncr/new'
+import { Route as QueueIndexRouteImport } from './routes/queue/index'
+import { Route as QueueIdRouteImport } from './routes/queue/$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuditRoute = AuditRouteImport.update({
+  id: '/audit',
+  path: '/audit',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DamageRoute = DamageRouteImport.update({
+  id: '/damage',
+  path: '/damage',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HistoryRoute = HistoryRouteImport.update({
+  id: '/history',
+  path: '/history',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HoldRoute = HoldRouteImport.update({
+  id: '/hold',
+  path: '/hold',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NotificationsRoute = NotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReleaseRoute = ReleaseRouteImport.update({
+  id: '/release',
+  path: '/release',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReportsRoute = ReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReworkRoute = ReworkRouteImport.update({
+  id: '/rework',
+  path: '/rework',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RtsRoute = RtsRouteImport.update({
+  id: '/rts',
+  path: '/rts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SamplingRoute = SamplingRouteImport.update({
+  id: '/sampling',
+  path: '/sampling',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ScanRoute = ScanRouteImport.update({
+  id: '/scan',
+  path: '/scan',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ScrapRoute = ScrapRouteImport.update({
+  id: '/scrap',
+  path: '/scrap',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StorageRoute = StorageRouteImport.update({
+  id: '/storage',
+  path: '/storage',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InspectionIdRoute = InspectionIdRouteImport.update({
+  id: '/inspection/$id',
+  path: '/inspection/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NcrIndexRoute = NcrIndexRouteImport.update({
+  id: '/ncr/',
+  path: '/ncr/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NcrIdRoute = NcrIdRouteImport.update({
+  id: '/ncr/$id',
+  path: '/ncr/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NcrNewRoute = NcrNewRouteImport.update({
+  id: '/ncr/new',
+  path: '/ncr/new',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QueueIndexRoute = QueueIndexRouteImport.update({
+  id: '/queue/',
+  path: '/queue/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QueueIdRoute = QueueIdRouteImport.update({
+  id: '/queue/$id',
+  path: '/queue/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/audit': typeof AuditRoute
+  '/damage': typeof DamageRoute
+  '/history': typeof HistoryRoute
+  '/hold': typeof HoldRoute
+  '/notifications': typeof NotificationsRoute
+  '/release': typeof ReleaseRoute
+  '/reports': typeof ReportsRoute
+  '/rework': typeof ReworkRoute
+  '/rts': typeof RtsRoute
+  '/sampling': typeof SamplingRoute
+  '/scan': typeof ScanRoute
+  '/scrap': typeof ScrapRoute
+  '/settings': typeof SettingsRoute
+  '/storage': typeof StorageRoute
+  '/inspection/$id': typeof InspectionIdRoute
+  '/ncr/$id': typeof NcrIdRoute
+  '/ncr/new': typeof NcrNewRoute
+  '/queue/$id': typeof QueueIdRoute
+  '/ncr/': typeof NcrIndexRoute
+  '/queue/': typeof QueueIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/audit': typeof AuditRoute
+  '/damage': typeof DamageRoute
+  '/history': typeof HistoryRoute
+  '/hold': typeof HoldRoute
+  '/notifications': typeof NotificationsRoute
+  '/release': typeof ReleaseRoute
+  '/reports': typeof ReportsRoute
+  '/rework': typeof ReworkRoute
+  '/rts': typeof RtsRoute
+  '/sampling': typeof SamplingRoute
+  '/scan': typeof ScanRoute
+  '/scrap': typeof ScrapRoute
+  '/settings': typeof SettingsRoute
+  '/storage': typeof StorageRoute
+  '/inspection/$id': typeof InspectionIdRoute
+  '/ncr/$id': typeof NcrIdRoute
+  '/ncr/new': typeof NcrNewRoute
+  '/queue/$id': typeof QueueIdRoute
+  '/ncr': typeof NcrIndexRoute
+  '/queue': typeof QueueIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/audit': typeof AuditRoute
+  '/damage': typeof DamageRoute
+  '/history': typeof HistoryRoute
+  '/hold': typeof HoldRoute
+  '/notifications': typeof NotificationsRoute
+  '/release': typeof ReleaseRoute
+  '/reports': typeof ReportsRoute
+  '/rework': typeof ReworkRoute
+  '/rts': typeof RtsRoute
+  '/sampling': typeof SamplingRoute
+  '/scan': typeof ScanRoute
+  '/scrap': typeof ScrapRoute
+  '/settings': typeof SettingsRoute
+  '/storage': typeof StorageRoute
+  '/inspection/$id': typeof InspectionIdRoute
+  '/ncr/$id': typeof NcrIdRoute
+  '/ncr/new': typeof NcrNewRoute
+  '/queue/$id': typeof QueueIdRoute
+  '/ncr/': typeof NcrIndexRoute
+  '/queue/': typeof QueueIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/audit'
+    | '/damage'
+    | '/history'
+    | '/hold'
+    | '/notifications'
+    | '/release'
+    | '/reports'
+    | '/rework'
+    | '/rts'
+    | '/sampling'
+    | '/scan'
+    | '/scrap'
+    | '/settings'
+    | '/storage'
+    | '/inspection/$id'
+    | '/ncr/$id'
+    | '/ncr/new'
+    | '/queue/$id'
+    | '/ncr/'
+    | '/queue/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/audit'
+    | '/damage'
+    | '/history'
+    | '/hold'
+    | '/notifications'
+    | '/release'
+    | '/reports'
+    | '/rework'
+    | '/rts'
+    | '/sampling'
+    | '/scan'
+    | '/scrap'
+    | '/settings'
+    | '/storage'
+    | '/inspection/$id'
+    | '/ncr/$id'
+    | '/ncr/new'
+    | '/queue/$id'
+    | '/ncr'
+    | '/queue'
+  id:
+    | '__root__'
+    | '/'
+    | '/audit'
+    | '/damage'
+    | '/history'
+    | '/hold'
+    | '/notifications'
+    | '/release'
+    | '/reports'
+    | '/rework'
+    | '/rts'
+    | '/sampling'
+    | '/scan'
+    | '/scrap'
+    | '/settings'
+    | '/storage'
+    | '/inspection/$id'
+    | '/ncr/$id'
+    | '/ncr/new'
+    | '/queue/$id'
+    | '/ncr/'
+    | '/queue/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuditRoute: typeof AuditRoute
+  DamageRoute: typeof DamageRoute
+  HistoryRoute: typeof HistoryRoute
+  HoldRoute: typeof HoldRoute
+  NotificationsRoute: typeof NotificationsRoute
+  ReleaseRoute: typeof ReleaseRoute
+  ReportsRoute: typeof ReportsRoute
+  ReworkRoute: typeof ReworkRoute
+  RtsRoute: typeof RtsRoute
+  SamplingRoute: typeof SamplingRoute
+  ScanRoute: typeof ScanRoute
+  ScrapRoute: typeof ScrapRoute
+  SettingsRoute: typeof SettingsRoute
+  StorageRoute: typeof StorageRoute
+  InspectionIdRoute: typeof InspectionIdRoute
+  NcrIdRoute: typeof NcrIdRoute
+  NcrNewRoute: typeof NcrNewRoute
+  QueueIdRoute: typeof QueueIdRoute
+  NcrIndexRoute: typeof NcrIndexRoute
+  QueueIndexRoute: typeof QueueIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,22 +312,172 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/audit': {
+      id: '/audit'
+      path: '/audit'
+      fullPath: '/audit'
+      preLoaderRoute: typeof AuditRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/damage': {
+      id: '/damage'
+      path: '/damage'
+      fullPath: '/damage'
+      preLoaderRoute: typeof DamageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/history': {
+      id: '/history'
+      path: '/history'
+      fullPath: '/history'
+      preLoaderRoute: typeof HistoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hold': {
+      id: '/hold'
+      path: '/hold'
+      fullPath: '/hold'
+      preLoaderRoute: typeof HoldRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notifications': {
+      id: '/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof NotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/release': {
+      id: '/release'
+      path: '/release'
+      fullPath: '/release'
+      preLoaderRoute: typeof ReleaseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reports': {
+      id: '/reports'
+      path: '/reports'
+      fullPath: '/reports'
+      preLoaderRoute: typeof ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rework': {
+      id: '/rework'
+      path: '/rework'
+      fullPath: '/rework'
+      preLoaderRoute: typeof ReworkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rts': {
+      id: '/rts'
+      path: '/rts'
+      fullPath: '/rts'
+      preLoaderRoute: typeof RtsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sampling': {
+      id: '/sampling'
+      path: '/sampling'
+      fullPath: '/sampling'
+      preLoaderRoute: typeof SamplingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/scan': {
+      id: '/scan'
+      path: '/scan'
+      fullPath: '/scan'
+      preLoaderRoute: typeof ScanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/scrap': {
+      id: '/scrap'
+      path: '/scrap'
+      fullPath: '/scrap'
+      preLoaderRoute: typeof ScrapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/storage': {
+      id: '/storage'
+      path: '/storage'
+      fullPath: '/storage'
+      preLoaderRoute: typeof StorageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/inspection/$id': {
+      id: '/inspection/$id'
+      path: '/inspection/$id'
+      fullPath: '/inspection/$id'
+      preLoaderRoute: typeof InspectionIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ncr/': {
+      id: '/ncr/'
+      path: '/ncr'
+      fullPath: '/ncr/'
+      preLoaderRoute: typeof NcrIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ncr/$id': {
+      id: '/ncr/$id'
+      path: '/ncr/$id'
+      fullPath: '/ncr/$id'
+      preLoaderRoute: typeof NcrIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ncr/new': {
+      id: '/ncr/new'
+      path: '/ncr/new'
+      fullPath: '/ncr/new'
+      preLoaderRoute: typeof NcrNewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/queue/': {
+      id: '/queue/'
+      path: '/queue'
+      fullPath: '/queue/'
+      preLoaderRoute: typeof QueueIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/queue/$id': {
+      id: '/queue/$id'
+      path: '/queue/$id'
+      fullPath: '/queue/$id'
+      preLoaderRoute: typeof QueueIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuditRoute: AuditRoute,
+  DamageRoute: DamageRoute,
+  HistoryRoute: HistoryRoute,
+  HoldRoute: HoldRoute,
+  NotificationsRoute: NotificationsRoute,
+  ReleaseRoute: ReleaseRoute,
+  ReportsRoute: ReportsRoute,
+  ReworkRoute: ReworkRoute,
+  RtsRoute: RtsRoute,
+  SamplingRoute: SamplingRoute,
+  ScanRoute: ScanRoute,
+  ScrapRoute: ScrapRoute,
+  SettingsRoute: SettingsRoute,
+  StorageRoute: StorageRoute,
+  InspectionIdRoute: InspectionIdRoute,
+  NcrIdRoute: NcrIdRoute,
+  NcrNewRoute: NcrNewRoute,
+  QueueIdRoute: QueueIdRoute,
+  NcrIndexRoute: NcrIndexRoute,
+  QueueIndexRoute: QueueIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
